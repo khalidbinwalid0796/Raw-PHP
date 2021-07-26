@@ -1,0 +1,8 @@
+two way to define constant(define,const),magic constant(__LINE__,__FILE__,__DIR__,__FUNCTION__,__CLASS__,__METHOD__),
+global keyword(to access local variable in global),iterable(accept object & array),php built in function check,
+type juggling & casting,array method(array_change_key_case(),array_column(),array_combine(),array_count_values(),
+array_diff(),array_diff_assoc(),array_diff_key(),array_intersect(),array_intersect_assoc(),array_intersect_key(),
+array_key_exists(),array_keys(),array_map(),array_merge(),array_multisort(),array_pad(),array_push(),array_product(),
+array_replace(),array_reverse(),array_shift(),array_slice(),array_sum(),array_unique(),array_unshift(),array_values(),
+array_walk(),arsort(),asort(),compact(),current(),next(),prev(),end(),in_array(),key(),krsort(),ksort(),krsort(),ksort(),
+shuffle())

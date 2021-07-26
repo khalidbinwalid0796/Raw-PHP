@@ -1,0 +1,261 @@
+$name = "hi hello I am khalid";
+var dump
+echo 'hi $name'; as string
+echo "hi $name"; as variable
+echo strlen($name);
+echo str_word_count($name);
+echo strpos($name);
+echo ucfirst($name);
+echo ucwords($name);
+echo strtoupper($name);
+echo strtolower($name);
+
+
+
+//concat in php
+$fname = "sakib";
+$lname = "all-rounder";
+echo $fname.' '.$lname;
+
+
+
+//constant
+define('NUM',10);
+
+
+
+//array
+$cars = array(10,20);
+echo $arr['0'];
+echo '<pre>'; //format kore dei
+print_r($cars);
+
+//foreach loop for array
+foreach($cars as $list){
+	echo $list;
+}
+
+foreach($cars as $key=>$val){
+	echo $val;
+}
+
+//Associative arrays
+$names = array("name"=>"sakib","city"=>"jessore");
+foreach($names as $key=>$val){
+	echo $val;
+}
+
+//multi-dimension array
+$arr = array("student1"=>array(
+	"name"=>"sakib","city"=>"jessore",
+	"subject"=>array("english","bangla"),
+	"age"=>10
+));
+
+
+
+
+//count()
+//sort()
+//ksort()
+//function and global;
+
+function add(a,b){
+	echo $a+$b;
+}
+add(20,30);
+
+
+
+//Error
+$x = 10;
+function add(){
+	echo $x; //$x undefined, function ar birer variable function ar vitore access kora jai na
+}
+add();
+
+//now error solove
+$x = 10;
+function add(){
+	global $x; //function ar birer variable function ar vitore access kora jai global use kore
+	echo $x;
+}
+add();
+
+
+
+
+//form
+echo '<pre>';
+print_r($_POST);
+print_r($_FILES);//aitar moddhe sob paoea jai,name,type,size,tmp_name,error & validation o lagano jai
+//file size validation
+$size = $_FILES['file']['size']/1024;
+if($size<200){
+	
+}else{
+	
+}
+
+if(isset($_POST['submit'])){
+	$file = rand(1111111,9999999);
+	move_uploaded_file($_FILES['doc']['tem_name'],'media/'.$file.$_FILES['doc']['name']); 
+	move_uploaded_file($_FILES['file']['tem_name'],$_FILES['file']['name']); 
+	//['name']->file kon nam a upload hobe
+}
+//get->url a data show kore, file upload hoy na
+
+
+
+
+//Session->session holo array, ak browser ar session onno browser a kaj kore na, session 24 min porjonto value store korte pare
+xampp ar 1st config ar 4 no option a session time barano jai.
+session.php
+<?php
+    session_start();
+    $_SESSION['x'] = 10;
+    $_SESSION['y'] = 20;	
+?>
+session1.php
+<?php
+   session_start();
+   //echo $_SESSION['x'];
+   unset($_SESSION['x']); //specific session delete korar jonno
+   session_destroy(); //complete or all session delete korar jonno	
+?>
+
+
+
+
+//cookie->txt file, user k track korar jonno use kora hoy
+cookie.php
+	<?php
+		setcookie('city','dhaka',time()+10); 
+		//time()+10->current time theke 10s bese somoy porjonto cookie dhore rakhe
+	?>
+cookie1.php
+	<?php
+		echo '<pre>';
+		print_r($_COOKIE);
+	?>
+cookie_delete.php
+	<?php
+		setcookie('city','dhaka',100);
+		//delete korar jonno akta time dilee hoy ex-100
+	?>
+
+
+
+
+//redirect ar somoy header ar sathe die must
+header('location:index.php');
+die();
+
+
+
+
+//include->warning dei but run hoy
+//require->warning dei but run hoy na
+
+
+
+//edit ar somoy
+//problem : url a id="" or empty id die enter press korle edit page open hoy ata to ucit na ty nicher solution
+if(mysql_num_rows($res)==0){
+header('location:index.php');
+die();
+}
+
+
+
+
+//delete ar somoy
+//problem : url a id="" or empty id die data delete jeno na hoy
+if($id==''){
+header('location:index.php');
+die();
+}
+
+
+
+//login, logout, middleware -->>using session
+
+
+
+//form ->input,
+radio->male,female; name same hobe but value difference
+checkbox->ssc,hsc,bsc,msc; name same hobe & name must array formar a hobe but value difference
+but radio & checkbox ar somoy value select na korle error dekhai mane index create hoy na ty 
+isset die check kore nite hoy
+
+$maleChecked = '';
+$femaleChecked = '';
+if(isset($_POST['gender'])){
+	$gender = $_POST['gender'];
+	if($gender=='Male'){
+		$maleChecked = "checked='checked'";
+	}if($gender=='Female'){
+		$femaleChecked = "checked='checked'";
+	}
+}else{
+	$gender = '';
+}
+
+Male : <input type="radio" name ="gender" value="male"/><?php echo $maleChecked ?>
+
+$education = implode(" ",$education); //implode converts array to string
+
+//Blank value initialize or ''; why this???
+$name = '';
+<input type = "textbox" name="name" <?php echo $name ?>
+jode $name input field a value die submit korar por paoea jai tahole blank initialize korte hobe na hole error
+show korbe.
+
+//dropdown theke jete select korbo seta jeno selected obosthai thake
+<?php
+	$cityArr = array('satkhira','barishal','jessore','khulna')
+?>
+
+<select name = "city">
+<option>select city</option>
+foreach($cityArr as $list){
+	if($city==$list){ //$city holo submit korar por $_POST die dhora variable
+		echo "<option selected>".$list."</option>"
+	}else{
+		echo "<option selected>".$list."</option>"
+	}
+}
+
+//checkbox ar jonno akta array banate hobe & 1st a empty array initialize korte hobe
+in_array($list,$education);//element, array;in_array->check element in a array
+
+
+
+//json used for storing and exchanging data
+//json_encode() function is used to encode a value like array, object to JSON string.
+//The json_decode() function is used to decode a JSON string into a PHP array, object or an associative array.
+//json_decode(1st_parameter,true)-> true mane JSON string ta associative array(key,value) te convert hobe
+//true parameter na dile echo $decodeedArray->name aivabe access kora jai
+
+
+
+//db connection
+
+host :- localhost; jokhon source code & database same server a thake
+dbname :- database name
+username :- localhost ar default username root
+password :- localhost ar default password blank
+
+//mysql
+
+$con=mysql_connect("localhost","root","");
+mysql_select_db("youtube",$con); //mysql_select_db -> database select kore nie ase
+$sql = "insert into test(name) values(sakib)";
+mysql_query($sql); //mysql_query->sql query execute kore
+
+
+//mysqli
+
+$con=mysqli_connect("localhost","root","","youtube");
+$sql = "insert into test(name) values(sakib)";
+mysqli_query($con,$sql);

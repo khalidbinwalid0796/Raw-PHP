@@ -12,7 +12,28 @@
 
 
 //mysqli
+    
+    //1st way to connect database
     $con=mysqli_connect("localhost","root","","youtube"); //localhost->host name or server name
+
+/* 
+   //2nd way to connect database
+    //MySQL connect information
+    $servername ="localhost";
+    $db_user    ="root";
+    $password   ="";
+    $c_database ="youtube";
+    
+    //Create connection
+    $dbconnection=mysqli_connect($servername,$db_user,$password,$c_database);
+    
+    //Check connection
+    if(!$dbconnection)
+    {
+        die("Connection failed:".mysqli_connect_error());
+    }
+*/
+
     //$sql = "insert into test(name) values(sakib)";
     $sql = "select * from test";
     $res = mysqli_query($con,$sql); //mysqli_query->sql query execute kore
